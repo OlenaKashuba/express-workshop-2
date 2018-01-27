@@ -1,13 +1,23 @@
 [
     {
-        "title": "My first blog post",
+        "title": "Welcome to my blog",
         "id": "1",
-        "summary": "This is a summary of my first blog post",
-        "content": "This is the full content of my first blog post that I published to my own website"
+        "summary": "Hi, my name is Olena and this is my blog",
+        "content": "There are more information about me and my blog"
     }, {
-        "title": "My second blog post",
+        "title": "Code Your Future",
          "id": "2",
-        "summary": "This is a summary of my second blog post",
-        "content": "This is the full content of my second blog post that I published to my own website"
+        "summary": "CYF - the organisation, which helps asylum seekers and refugees",
+        "content": "More information about CYF, its goals and activity"
+    }, {
+        "title": "My class",
+         "id": "3",
+        "summary": "London Class 3 is my class",
+        "content": "I would like to tell more about my class and our daily routine"
+    }, {
+        "title": "Our mentors",
+         "id": "4",
+        "summary": "Our mentors are the best mentors ever",
+        "content": "There are more information about people who teach us"
     }
 ]
