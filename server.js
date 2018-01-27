@@ -11,9 +11,9 @@ app.set('view engine', 'handlebars');
 // The extensions 'html' allows us to serve file without adding .html at the end 
 // i.e /my-cv will server /my-cv.html
 
+const filePath = __dirname + "/data/posts.json";
 
 app.get('/', (req, res) => {
-  const filePath = __dirname + "/data/posts.json";
   const callbackFunction = (error, file) => {
     // we call .toString() to turn the file buffer to a String
     const fileData = file.toString();
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
     const postsJson = JSON.parse(fileData);
     // send the json to the Template to render
     res.render('index', {
-      title: 'Olena\'s Profile', // insert your name instead
+      title: 'Olena', // insert your name instead
       posts: postsJson
     });
   };
@@ -29,15 +29,35 @@ app.get('/', (req, res) => {
 });
 
 app.get('/my-cv', (req,res) => {
-	res.render('my-cv');
+	res.render('my-cv', {title: 'Olena'});
 });
 
 app.get('/admin', (req,res) => {
-	res.render('admin');
+	res.render('admin', {title: 'Olena'});
 });
 
 app.get('/contact-information', (req,res) => {
 	res.render('contact', {title: 'Olena'});
+});
+
+app.get('/posts', (req,res) => {
+	res.sendFile(filePath);
+});
+
+app.get('/posts/:id', (req,res) => {
+	let postId = req.params.id;
+	fs.readFile(filePath, (error,file) => {
+		if (error) {
+			console.log(error);
+		} else {
+			let parsedFile = JSON.parse(file);
+			parsedFile.forEach((post) => {
+				if (post.id === postId) {
+					res.send(post);
+				};		
+			});
+		};
+	});
 });
 
 // what does this line mean: process.env.PORT || 3000
